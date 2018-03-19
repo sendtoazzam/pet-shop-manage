@@ -26,7 +26,7 @@ Vue.mixin({
     // 编辑
     edit(model) {
       this.actionType = 'edit'
-      this.model = model
+      this.model = Object.assign({}, model)
       this.isShowDialog = true
     },
     // 删除

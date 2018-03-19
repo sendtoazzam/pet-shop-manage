@@ -40,6 +40,9 @@
         delete res.typeName
         delete res.status
         delete res.price
+        delete res.customerId
+        delete res.customerName
+        delete res.customerPhone
         return res
       },
       getStatusName(status) {
