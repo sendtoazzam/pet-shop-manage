@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="../../assets/common.css">
+  <link rel="stylesheet" href="../../vendor/element/index.css">
+</head>
+<body>
+  <div id="app" v-cloak>
+    <header>
+      <div class="ly">
+        <a href="###">宠物类型</a>
+      </div>
+    </header>
+    
+    <el-table
+      :data="list"
+      border
+      stripe>
+      <el-table-column
+        type="index"
+        label="序列"
+        align="center"
+        width="80">
+      </el-table-column>
+      <el-table-column
+        prop="name"
+        label="名称"
+        >
+      </el-table-column>
+      <el-table-column
+        prop="op"
+        label="操作"
+        >
+        <template scope="scope">
+          <el-button type="info" size="small" @click="edit(scope.row.id)">编辑</el-button>
+          <el-button type="danger" size="small" @click="remove(scope.row.id)">删除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+  </div>
+
+  
+  <script src="../../vendor/vue.js"></script>
+  <script src="../../vendor/element/index.js"></script>
+  <script src="../../vendor/axios.js"></script>
+  <script src="../../config.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
