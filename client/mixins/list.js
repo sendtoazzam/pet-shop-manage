@@ -37,6 +37,9 @@ Vue.mixin({
     },
     confirm() {
       var data = this.model
+      if(this.beforeSubmit) {
+        data = this.beforeSubmit(data)
+      }
       if(this.actionType === 'add') {
         axios.put(`${window.config.apiPrefix}/${this.resourceName}`, data).then(({data}) => {
           this.handleRes(data, '新增')

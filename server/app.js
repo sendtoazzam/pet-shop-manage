@@ -26,7 +26,12 @@ app.all('*', function(req, res, next) {
 var apis = {
   pet_type: require('./api/pet_type'),
   customer: require('./api/customer'),
+  pet: require('./api/pet'),
 }
+
+app.post(`/pet/sale/:id`, (req,res) => {
+  apis.pet.sale(req, res, pool)
+})
 
 generateAPI(Object.keys(apis))
 
