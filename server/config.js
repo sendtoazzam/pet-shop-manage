@@ -1,9 +1,10 @@
 module.exports = {
   port: 3001,
-  mysql: {
+  mysql: { // mysql 配置
+    connectionLimit : 10,
     host     : 'localhost',
-    user     : 'me',
-    password : 'secret',
-    database : 'my_db'
+    user     : 'root',
+    password : '',
+    database : 'pet'
   }
 }
