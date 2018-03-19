@@ -14,32 +14,34 @@
         <a href="###">宠物类型</a>
       </div>
     </header>
+    <div class="container">
+      <el-table
+        :data="list"
+        border
+        stripe>
+        <el-table-column
+          type="index"
+          label="序列"
+          align="center"
+          width="80">
+        </el-table-column>
+        <el-table-column
+          prop="name"
+          label="名称"
+          >
+        </el-table-column>
+        <el-table-column
+          prop="op"
+          label="操作"
+          >
+          <template scope="scope">
+            <el-button type="info" size="small" @click="edit(scope.row.id)">编辑</el-button>
+            <el-button type="danger" size="small" @click="remove(scope.row.id)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
     
-    <el-table
-      :data="list"
-      border
-      stripe>
-      <el-table-column
-        type="index"
-        label="序列"
-        align="center"
-        width="80">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="名称"
-        >
-      </el-table-column>
-      <el-table-column
-        prop="op"
-        label="操作"
-        >
-        <template scope="scope">
-          <el-button type="info" size="small" @click="edit(scope.row.id)">编辑</el-button>
-          <el-button type="danger" size="small" @click="remove(scope.row.id)">删除</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
   </div>
 
   
