@@ -24,7 +24,8 @@ app.all('*', function(req, res, next) {
 
 // 所有的api
 var apis = {
-  pet_type: require('./api/pet_type')
+  pet_type: require('./api/pet_type'),
+  customer: require('./api/customer'),
 }
 
 generateAPI(Object.keys(apis))
