@@ -6,6 +6,8 @@
     },
     methods: {
     },
-    
+    mounted() {
+      this.fetchList()
+    }
   })
 }
