@@ -11,11 +11,16 @@
   <div id="app" v-cloak>
     <header>
       <el-menu theme="dark" default-active="customer" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="pet_type">宠物类型</el-menu-item>
-        <el-menu-item index="customer">客户</el-menu-item>
-        <el-menu-item index="pet_on_sale">出售中的宠物</el-menu-item>
-        <el-menu-item index="pet_on_deposit">寄存中的宠物</el-menu-item>
-        <el-menu-item index="money">收入</el-menu-item>
+        <div class="ly ly-j">
+          <el-menu-item index="home">宠物店业务系统</el-menu-item>
+          <div>
+            <el-menu-item index="pet_type">宠物类型</el-menu-item>
+            <el-menu-item index="customer">客户</el-menu-item>
+            <el-menu-item index="pet_on_sale">出售中的宠物</el-menu-item>
+            <el-menu-item index="pet_on_deposit">寄存中的宠物</el-menu-item>
+            <el-menu-item index="money">收入</el-menu-item>
+          </div>
+        </div>
       </el-menu>
     </header>
     <div class="container mt-20">

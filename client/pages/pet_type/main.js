@@ -1,10 +1,8 @@
 {
   var app = new Vue({
     el: '#app',
-    data() {
-      return {
-        resourceName: 'pet_type'
-      },
+    data:{
+      resourceName: 'pet_type'
     },
     methods: {
     },

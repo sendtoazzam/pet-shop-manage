@@ -58,6 +58,9 @@ Vue.mixin({
       }
     },
     handleSelect(pageName) {
+      if(pageName === 'home') {
+        return
+      }
       location.href = `../${pageName}/index.html`
     }
   },
