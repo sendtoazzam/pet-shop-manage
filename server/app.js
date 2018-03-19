@@ -28,9 +28,14 @@ var apis = {
   customer: require('./api/customer'),
   pet: require('./api/pet'),
 }
-
+// 售出
 app.post(`/pet/sale/:id`, (req,res) => {
   apis.pet.sale(req, res, pool)
+})
+
+// 领回
+app.post(`/pet/back/:id`, (req,res) => {
+  apis.pet.back(req, res, pool)
 })
 
 generateAPI(Object.keys(apis))

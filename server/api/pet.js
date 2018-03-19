@@ -5,7 +5,11 @@ const getUpdateSql = require('../utils/getUpdateSql')
 const tableName = 'pet'
 module.exports = {
   list(req, res, pool) {
-    pool.query(`SELECT p.*, t.name typeName from ${tableName} p left join pet_type t on p.pet_type_id = t.id`, function (error, results, fields) {
+    pool.query(`SELECT p.*, t.name typeName, c.id customerId, c.name customerName, c.phone customerPhone from ${tableName} p 
+        left join pet_type t on p.pet_type_id = t.id
+        left join customer c on p.customer_id = c.id
+        where p.type = ${req.query.type || 1}
+      `, function (error, results, fields) {
       if (error) {
         res.send(apiFormat.error(error));
         return
@@ -50,6 +54,18 @@ module.exports = {
     })
   },
   sale(req, res, pool) {
+    var body = req.body
+    var sql = `UPDATE ${tableName} SET status = '2', price = ${body.price} WHERE id = '${req.params.id}'`
+    pool.query(sql, function (error, results, fields) {
+      // TODO 加一笔钱
+      if (error) {
+        res.send(apiFormat.error(error));
+        return
+      }
+      res.send(apiFormat.success(results))
+    })
+  },
+  back(req, res, pool) {
     var body = req.body
     var sql = `UPDATE ${tableName} SET status = '2', price = ${body.price} WHERE id = '${req.params.id}'`
     pool.query(sql, function (error, results, fields) {

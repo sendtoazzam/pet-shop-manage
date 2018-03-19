@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>本店宠物</title>
+  <title>寄存中的宠物</title>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../../assets/common.css">
   <link rel="stylesheet" href="../../vendor/element/index.css">
@@ -10,7 +10,7 @@
 <body>
   <div id="app" v-cloak>
     <header>
-      <el-menu theme="dark" default-active="pet_on_sale" mode="horizontal" @select="handleSelect">
+      <el-menu theme="dark" default-active="pet_on_deposit" mode="horizontal" @select="handleSelect">
         <div class="ly ly-j">
           <el-menu-item index="home">宠物店业务系统</el-menu-item>
           <div>
@@ -47,7 +47,6 @@
             prop="typeName"
             label="类型"
             >
-
           </el-table-column>
           <el-table-column
             prop="status"
@@ -58,8 +57,18 @@
             </template>
           </el-table-column>
           <el-table-column
+            prop="customerName"
+            label="客户姓名"
+            >
+          </el-table-column>
+          <el-table-column
+            prop="customerPhone"
+            label="客户电话"
+            >
+          </el-table-column>
+          <el-table-column
             prop="price"
-            label="出售价格(元)"
+            label="寄存收费(元)"
             >
             <template scope="scope">
               {{scope.row.price || '-'}}
@@ -77,22 +86,23 @@
             >
             <template scope="scope">
               <el-button type="info" size="small" @click="edit(scope.row)">编辑</el-button>
-              <el-button type="info" size="small" @click="sale(scope.row.id)" v-if="scope.row.status == 1">出售</el-button>
+              <el-button type="info" size="small" @click="back(scope.row.id)" v-if="scope.row.status == 1">领回</el-button>
+              <el-button type="info" size="small" @click="deposit(scope.row.id)" v-if="scope.row.status == 2">寄存</el-button>
               <el-button type="danger" size="small" @click="remove(scope.row.id)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
       </el-card>
     </div>
-    <el-dialog title="出售" :visible.sync="isShowSaleDialog">
+    <el-dialog title="领回" :visible.sync="isShowBackDialog">
       <el-form :inline="true" label-width="80px" >
-        <el-form-item label="价格">
+        <el-form-item label="收费">
           <el-input v-model="price"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="isShowSaleDialog = false">取 消</el-button>
-        <el-button type="primary" @click="confirmSell">确 定</el-button>
+        <el-button @click="isShowBackDialog = false">取 消</el-button>
+        <el-button type="primary" @click="confirmBack">确 定</el-button>
       </span>
     </el-dialog>
     <el-dialog :title="(actionType === 'add' ? '新增' : '编辑') + '宠物'" :visible.sync="isShowDialog">
@@ -104,6 +114,16 @@
           <el-select v-model="model.pet_type_id" placeholder="请选择">
             <el-option
               v-for="item in petTypeList"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="客户" prop="customer_id">
+          <el-select v-model="model.customer_id" placeholder="请选择">
+            <el-option
+              v-for="item in customerTypeList"
               :key="item.id"
               :label="item.name"
               :value="item.id">
