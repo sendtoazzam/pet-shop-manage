@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>收入</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="../../assets/common.css">
+  <link rel="stylesheet" href="../../vendor/element/index.css">
+</head>
+<body>
+  <div id="app" v-cloak>
+    <header>
+      <el-menu theme="dark" default-active="money" mode="horizontal" @select="handleSelect">
+        <div class="ly ly-j">
+          <el-menu-item index="home">宠物店业务系统</el-menu-item>
+          <div>
+            <el-menu-item index="pet_type">宠物类型</el-menu-item>
+            <el-menu-item index="customer">客户</el-menu-item>
+            <el-menu-item index="pet_on_sale">本店宠物</el-menu-item>
+            <el-menu-item index="pet_on_deposit">寄存中的宠物</el-menu-item>
+            <el-menu-item index="money">收入</el-menu-item>
+          </div>
+        </div>
+      </el-menu>
+    </header>
+    <div class="container mt-20">
+     <span>总收入: ￥{{total}} 元</span>
+      <el-card class="box-card mt-10">
+        <el-table
+          :data="list"
+          border
+          stripe>
+          <el-table-column
+            type="index"
+            label="序列"
+            align="center"
+            width="80">
+          </el-table-column>
+          <el-table-column
+            prop="price"
+            label="金额(元)"
+            >
+          </el-table-column>
+          <el-table-column
+            prop="phone"
+            label="来源"
+            >
+            <template scope="scope">
+              {{getTypeName(scope.row.type)}}
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="date"
+            label="时间"
+            >
+          </el-table-column>
+        </el-table>
+      </el-card>
+    </div>
+    
+  </div>
+
+  
+  <script src="../../vendor/vue.js"></script>
+  <script src="../../mixins/list.js"></script>
+  <script src="../../vendor/element/index.js"></script>
+  <script src="../../vendor/axios.js"></script>
+  <script src="../../config.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>

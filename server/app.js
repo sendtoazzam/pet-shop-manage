@@ -27,6 +27,7 @@ var apis = {
   pet_type: require('./api/pet_type'),
   customer: require('./api/customer'),
   pet: require('./api/pet'),
+  money: require('./api/money'),
 }
 // 售出
 app.post(`/pet/sale/:id`, (req,res) => {
