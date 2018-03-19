@@ -5,6 +5,7 @@ Vue.mixin({
       isShowDialog: false,
       actionType: 'add',
       model: {},
+      resourceName: ''
     }
   },
   methods: {
@@ -60,7 +61,5 @@ Vue.mixin({
       location.href = `../${pageName}/index.html`
     }
   },
-  mounted() {
-    this.fetchList()
-  }
+  
 })
