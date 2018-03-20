@@ -5,5 +5,4 @@
 
 调试接口可以用 [Postman](https://www.getpostman.com/)。
 
-## TODO
-* 导出数据库 Schema。
+数据库 [schema](schema.sql)
