@@ -33,6 +33,9 @@
         delete res.status
         delete res.price
         delete res.customer_id
+        delete res.customerId
+        delete res.customerName
+        delete res.customerPhone
         return res
       },
       getStatusName(status) {
