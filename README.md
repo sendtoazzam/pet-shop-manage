@@ -1,11 +1,11 @@
-# 宠物店业务管理系统
-* [服务端](server)
-* [客户端](client)
+# Pet shop business management system
+* Server
+* Client
 
-写着玩的项目。
+Write the project to play.
 
 ## TODO
-* 数据排序，按照数据的修改时间排序的倒序排序。
-* 过滤条件
-* 分页
-* Dashboard 页。一些概览。
+* The data is sorted and sorted in reverse order according to the modification time of the data.
+* Filter condition
+* Pagination
+* Dashboard page. Some overview.
